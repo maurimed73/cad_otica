@@ -80,6 +80,7 @@ class _CadastroInadimplenteState extends State<CadastroInadimplente> {
               children: [
                 TextFormField(
                   
+                  
                   controller: controllerDataCadastro,
                   decoration: InputDecoration(
                     labelText: 'Data Cadastro',
