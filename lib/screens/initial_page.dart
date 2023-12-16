@@ -3,7 +3,9 @@
  * profile: https://github.com/cimplesid
   */
 
-import 'package:cad_otica/screens/definir_cpf.dart';
+import 'package:cad_otica/screens/cadastrar_cpf.dart';
+import 'package:cad_otica/screens/home_screen.dart';
+import 'package:cad_otica/screens/procurar_cpf.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -28,7 +30,6 @@ class _FancyBottomBarPageState extends State<FancyBottomBarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         onPageChanged: (index) {
@@ -36,16 +37,12 @@ class _FancyBottomBarPageState extends State<FancyBottomBarPage> {
         },
         controller: pageController,
         children: const <Widget>[
-          CadastroInadimplente(),
-          Center(
-            child: Text('user'),
-          ),
+          ProcurarCpf(),
           Center(
             child: Text('Security'),
           ),
-          Center(
-            child: Text('Message'),
-          ),
+          HomeScreen(),
+          CadastroInadimplente(),
         ],
       ),
       bottomNavigationBar: StreamBuilder<Object>(
@@ -57,13 +54,29 @@ class _FancyBottomBarPageState extends State<FancyBottomBarPage> {
               currentIndex: cIndex,
               items: <FancyBottomNavigationItem>[
                 FancyBottomNavigationItem(
-                    icon: const Icon(Icons.home), title: const Text('Home')),
+                    icon: const Icon(Icons.search),
+                    title: const Text(
+                      'CPF',
+                      style: TextStyle(fontSize: 12),
+                    )),
                 FancyBottomNavigationItem(
-                    icon: const Icon(Icons.person), title: const Text('User')),
+                    icon: const Icon(Icons.security),
+                    title: const Text(
+                      'Security',
+                      style: TextStyle(fontSize: 12),
+                    )),
                 FancyBottomNavigationItem(
-                    icon: const Icon(Icons.security), title: const Text('Security')),
+                    icon: const Icon(Icons.message),
+                    title: const Text(
+                      'Message',
+                      style: TextStyle(fontSize: 12),
+                    )),
                 FancyBottomNavigationItem(
-                    icon: const Icon(Icons.message), title: const Text('Message')),
+                    icon: const Icon(Icons.person),
+                    title: const Text(
+                      'Cadastrar',
+                      style: TextStyle(fontSize: 12),
+                    )),
               ],
               onItemSelected: (int value) {
                 indexcontroller.add(value);
@@ -85,7 +98,7 @@ class FancyBottomNavigation extends StatefulWidget {
   final ValueChanged<int> onItemSelected;
 
   const FancyBottomNavigation(
-      {super.key, 
+      {super.key,
       this.currentIndex = 0,
       this.iconSize = 24,
       this.activeColor,
@@ -95,13 +108,15 @@ class FancyBottomNavigation extends StatefulWidget {
       required this.onItemSelected});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FancyBottomNavigationState createState() {
+    // ignore: no_logic_in_create_state
     return _FancyBottomNavigationState(
         items: items,
         backgroundColor: backgroundColor,
         currentIndex: currentIndex,
         iconSize: iconSize,
-        activeColor: activeColor,
+        activeColor: Colors.teal, //activeColor,
         inactiveColor: inactiveColor,
         onItemSelected: onItemSelected);
   }
@@ -138,7 +153,7 @@ class _FancyBottomNavigationState extends State<FancyBottomNavigation> {
           ? null
           : BoxDecoration(
               color: activeColor,
-              borderRadius: const BorderRadius.all(Radius.circular(50)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
       child: ListView(
         shrinkWrap: true,
@@ -174,8 +189,9 @@ class _FancyBottomNavigationState extends State<FancyBottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    activeColor =
-        (activeColor == null) ? Theme.of(context).colorScheme.secondary : activeColor;
+    activeColor = (activeColor == null)
+        ? Theme.of(context).colorScheme.secondary
+        : activeColor;
 
     backgroundColor = (backgroundColor == null)
         ? Theme.of(context).bottomAppBarTheme.color

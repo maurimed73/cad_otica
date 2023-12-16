@@ -1,4 +1,4 @@
-import 'package:cad_otica/screens/definir_cpf.dart';
+import 'package:cad_otica/screens/cadastrar_cpf.dart';
 import 'package:cad_otica/screens/initial_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pinkAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         useMaterial3: false,
       ),
       //home: const MyHomePage(title: 'Flutter Demo Home Page'),

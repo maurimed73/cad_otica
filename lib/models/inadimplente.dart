@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class Inadimplente {
   String id;
   String nome;
@@ -8,8 +7,7 @@ class Inadimplente {
   String loja;
   double valor;
   bool situacao;
-  
-  
+
   Inadimplente({
     required this.id,
     required this.nome,
@@ -21,25 +19,24 @@ class Inadimplente {
     required this.situacao,
   });
 
-  Map<String,dynamic>toJson()=>{
-    'id':id,
-    'name' : nome,
-    'cpf' : cpf,
-    'dataCadastro' : dataCadastro,
-    'dataDebito' : dataDebito,
-    'loja' : loja,
-    'valor' : valor,
-    'situacao' : situacao
-  };
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': nome,
+        'cpf': cpf,
+        'dataCadastro': dataCadastro,
+        'dataDebito': dataDebito,
+        'loja': loja,
+        'valor': valor,
+        'situacao': situacao
+      };
 
-  static Inadimplente fromJson(Map<String,dynamic>json)=>Inadimplente(
-    id: json['id'],
-    nome: json['Nome'], 
-    cpf: json['cpf'],
-    dataCadastro: json['data_cadastro'],
-    dataDebito: json['data_debito'],
-    loja: json['loja'],
-    valor : json['valor'],
-    situacao: json['situacao']);
-
+  static Inadimplente fromJson(Map<String, dynamic> json) => Inadimplente(
+      id: json['id'],
+      nome: json['name'],
+      cpf: json['cpf'],
+      dataCadastro: json['dataCadastro'],
+      dataDebito: json['dataDebito'],
+      loja: json['loja'],
+      valor: json['valor'],
+      situacao: json['situacao']);
 }
